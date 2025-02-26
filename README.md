@@ -1,2 +1,2 @@
 # memorize
-memorize iOS tutorial
+memorize card app written in SwiftUI
