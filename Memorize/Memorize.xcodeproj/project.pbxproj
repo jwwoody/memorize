@@ -13,6 +13,7 @@
 		A82BBAFE2C8FB993004E0B96 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A82BBAFD2C8FB993004E0B96 /* Preview Assets.xcassets */; };
 		A84838C22D6F927500143EF0 /* MemoryGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84838C12D6F927500143EF0 /* MemoryGame.swift */; };
 		A84838C42D6F938100143EF0 /* EmojiMemoryGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84838C32D6F938100143EF0 /* EmojiMemoryGame.swift */; };
+		A84839162D78FA0700143EF0 /* AspectVGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84839152D78FA0700143EF0 /* AspectVGrid.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		A82BBAFD2C8FB993004E0B96 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A84838C12D6F927500143EF0 /* MemoryGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryGame.swift; sourceTree = SOURCE_ROOT; };
 		A84838C32D6F938100143EF0 /* EmojiMemoryGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiMemoryGame.swift; sourceTree = "<group>"; };
+		A84839152D78FA0700143EF0 /* AspectVGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AspectVGrid.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 		A82BBAF42C8FB992004E0B96 /* Memorize */ = {
 			isa = PBXGroup;
 			children = (
+				A84839152D78FA0700143EF0 /* AspectVGrid.swift */,
 				A84838C12D6F927500143EF0 /* MemoryGame.swift */,
 				A82BBAF52C8FB992004E0B96 /* MemorizeApp.swift */,
 				A82BBAF72C8FB992004E0B96 /* EmojiMemoryGameView.swift */,
@@ -145,6 +148,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A84839162D78FA0700143EF0 /* AspectVGrid.swift in Sources */,
 				A82BBAF82C8FB992004E0B96 /* EmojiMemoryGameView.swift in Sources */,
 				A82BBAF62C8FB992004E0B96 /* MemorizeApp.swift in Sources */,
 				A84838C22D6F927500143EF0 /* MemoryGame.swift in Sources */,
