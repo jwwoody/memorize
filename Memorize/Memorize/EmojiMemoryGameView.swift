@@ -8,56 +8,62 @@
 import SwiftUI
 
 struct EmojiMemoryGameView: View {
+    typealias Card = MemoryGame<String>.Card
     @ObservedObject var viewModel: EmojiMemoryGame
     
     private let aspectRatio: CGFloat = 2/3
+    private let spacing: CGFloat = 4
+    
     var body: some View {
         VStack {
                 cards
-                    .animation(.default, value: viewModel.cards)
-            }
-            Button("Shuffle") {
-                viewModel.shuffle()
-            }
+                    .foregroundColor(viewModel.color)
+                HStack {
+                    score
+                    Spacer()
+                    shuffleButton
+                }
+        }
         .padding()
     }
     
-    @ViewBuilder
+    
+    private var score: some View {
+        Text("Score: \(viewModel.score)")
+            .animation(nil)
+    }
+    
+    private var shuffleButton: some View {
+        Button("Shuffle") {
+            withAnimation {
+                viewModel.shuffle()
+            }
+        }
+    }
+    
     private var cards: some View {
         AspectVGrid(viewModel.cards, aspectRatio: aspectRatio) { card in
-                CardView(card)
-                .padding(4)
+            CardView(card)
+                .padding(spacing)
+                .overlay(FlyingNumber(number: scoreChange(causedBy: card)))
                 .onTapGesture {
-                    viewModel.choose(card)
+                    withAnimation() {
+                        viewModel.choose(card)
+                    }
                 }
         }
-        .foregroundColor(.orange)
     }
+    
+    private func scoreChange(causedBy card: Card) -> Int {
+            if viewModel.cards.firstIndex(where: { $0.id == card.id }) == nil {
+                return 1
+            } else {
+                return -1
+            }
+        }
+    
 }
 
-struct CardView: View {
-    let card: MemoryGame<String>.Card
-    
-    init(_ card: MemoryGame<String>.Card) {
-        self.card = card
-    }
-    
-    var body: some View {
-        ZStack {
-            let base = RoundedRectangle(cornerRadius: 12)
-            Group {
-                base.fill(.white)
-                base.strokeBorder(lineWidth: 2)
-                Text(card.content).font(.system(size:200))
-                    .minimumScaleFactor(0.01)
-                    .aspectRatio(1, contentMode: .fit)
-            }
-            .opacity(card.isFaceUp ? 1 : 0)
-            base.fill().opacity(card.isFaceUp ? 0 : 1)
-        }
-        .opacity(card.isFaceUp || !card.isMatched ? 1 : 0)
-    }
-}
 struct EmojiMemoryGameView_Previews: PreviewProvider {
     static var previews: some View {
         EmojiMemoryGameView(viewModel: EmojiMemoryGame())
